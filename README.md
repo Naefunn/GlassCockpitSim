@@ -1,6 +1,6 @@
-# Primary Flight Display (PFD) Visualization
+# Primary Flight Display (PFD) Visualisation
 
-A modern C++/Qt project demonstrating the principles of a **Primary Flight Display (PFD)** found in modern glass cockpits. This application visualizes aircraft attitude, heading, airspeed, and altitude data in real time. It uses a simulated aircraft state as a data source, providing a realistic test feed without external dependencies.
+A modern C++/Qt project demonstrating the principles of a **Primary Flight Display (PFD)** found in modern glass cockpits. This application visualises aircraft pitch and roll, heading, airspeed, and altitude data in real time. It uses a simulated aircraft state as a data source, providing a realistic test feed without external dependencies.
 
 ## Features
 
@@ -14,7 +14,7 @@ A modern C++/Qt project demonstrating the principles of a **Primary Flight Displ
   Smooth updates driven by time-delta calculations for consistent behavior regardless of user input or system load.
 
 - **User-Controllable Targets**  
-  Command simulated pitch and roll values to see realistic transitions and responsive display updates.
+  Command simulated pitch and roll, throttle and airbreak values to see realistic transitions and responsive display updates.
 
 ## Project Roadmap
 
@@ -60,7 +60,7 @@ Enter new target roll (-180 to 180):
 
 ## Contributing
 
-Contributions and suggestions are welcome — especially around the graphical display design or avionics modeling. Please feel free to open issues or pull requests.
+Contributions and suggestions are welcome (this is a completely new world for me), especially around the graphical display design or avionics modeling. Please feel free to open issues or pull requests.
 
 ---
 
