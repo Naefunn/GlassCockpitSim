@@ -7,8 +7,8 @@ int main()
 {
     AircraftState aircraft;
 
-    double t = 0.0;
-    const double dt = 0.1;
+    auto lastTime = std::chrono::steady_clock::now();
+    auto startTime = std::chrono::steady_clock::now();
     
     double timeSinceLastPrompt = 0.0;
     double timeSinceLastPrint = 0.0;
@@ -18,14 +18,25 @@ int main()
 
     while (true) 
     {
-        aircraft.update(t);
+
+        auto now = std::chrono::steady_clock::now();
+        
+        std::chrono::duration<double> elapsed = now - lastTime;
+        double dt = elapsed.count();
+        lastTime = now;
+
+        std::chrono::duration<double> elapsedSinceStart = now - startTime;
+        double continuousTime = elapsedSinceStart.count();
+
+
+        aircraft.update(dt);
 
         timeSinceLastPrint += dt;
         timeSinceLastPrompt += dt;
 
         if (timeSinceLastPrint >= printInterval)
         {
-            std::cout << "Time: " << t << "s\n";
+            std::cout << "Time: " << continuousTime << "s\n";
             std::cout << "Pitch: " << aircraft.getPitch() << " degrees\n";
             std::cout << "Roll: " << aircraft.getRoll() << " degrees\n";
             std::cout << "Heading: " << aircraft.getHeading() << " degrees\n";
@@ -49,12 +60,13 @@ int main()
             aircraft.setTargetRoll(newRoll);
 
             timeSinceLastPrompt = 0.0;
+
+            lastTime = std::chrono::steady_clock::now();
         }
 
         
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(dt * 1000)));
-        t += dt;
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
     }
 
