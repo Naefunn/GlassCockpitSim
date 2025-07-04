@@ -1,5 +1,6 @@
 #include "AircraftState.h"
 #include <cmath>
+#include <algorithm>
 
 AircraftState::AircraftState()
 	: pitch(0.0), 
@@ -16,8 +17,27 @@ AircraftState::AircraftState()
 
 void AircraftState::update(double dt)
 {
-	pitch = 5.0 * std::sin(dt);
-	roll = 10.0 * std::sin(dt / 2.0);
+	const double rate = 10.0;
+
+	if (pitch < targetPitch)
+	{
+		pitch = std::min(pitch + rate * dt, targetPitch);
+	}
+	else if (pitch > targetPitch)
+	{
+		pitch = std::max(pitch - rate * dt, targetPitch);
+	}
+
+	if (roll < targetRoll)
+	{
+		roll = std::min(roll + rate * dt, targetRoll);
+	}
+	else if (roll > targetRoll)
+	{
+		roll = std::max(roll - rate * dt, targetRoll);
+	}
+
+
 	heading += 1.0 * dt;
 	if (heading >= 360.0) heading -= 360.0;
 
