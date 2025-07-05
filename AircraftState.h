@@ -15,11 +15,13 @@ public:
 	double getAirspeed() const;
 	double getAltitude() const;
 	double getVerticalSpeed() const;
+	double getThrust() const;
 
 	// setters 
 
 	void setTargetPitch(double pitch);
 	void setTargetRoll(double roll);
+	void setThrust(double thrustPercent);
 
 
 
@@ -34,6 +36,7 @@ private:
 	double verticalSpeed;	// feet per minute
 	double targetPitch;
 	double targetRoll;
+	double thrustPercent;
 
 
 };

@@ -49,7 +49,7 @@ int main()
 
         if (timeSinceLastPrompt >= promptInterval)
         {
-            double newPitch, newRoll;
+            double newPitch, newRoll, newThrust;
 
             std::cout << "Enter new target pitch (-90 to 90): ";
             std::cin >> newPitch;
@@ -58,6 +58,10 @@ int main()
             std::cout << "Enter new target roll (-180 to 180): ";
             std::cin >> newRoll;
             aircraft.setTargetRoll(newRoll);
+
+            std::cout << "Enter new thrust percentage (0 to 100): ";
+            std::cin >> newThrust;
+            aircraft.setThrust(newThrust);
 
             timeSinceLastPrompt = 0.0;
 
