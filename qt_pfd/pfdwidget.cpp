@@ -1,9 +1,12 @@
 #include "pfdwidget.h"
 #include <QPainter>
+#include <QColor>
+#include<QtMath>
 
 PFDWidget::PFDWidget(QWidget *parent)
     : QWidget(parent)
 {
+    setMinimumSize(400, 400);
 }
 
 void PFDWidget::paintEvent(QPaintEvent *event)

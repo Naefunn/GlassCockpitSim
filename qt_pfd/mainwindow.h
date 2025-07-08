@@ -20,6 +20,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void updateDisplay();
+
 private:
     Ui::MainWindow *ui;
 
